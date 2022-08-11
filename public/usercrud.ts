@@ -39,7 +39,7 @@ export class UserCRUD implements CRUD <User>
 
         data.forEach((ob:any) => 
             {
-                this.users.push(new User(ob.id,ob.firstname, ob.middlename, ob.lastname, ob.email, ob.phone, ob.role, ob.address));
+                this.users.push(new User(ob.id,ob.first_name, ob.middle_name, ob.last_name, ob.email, ob.phone_number, ob.role, ob.address));
             }
         )
     }
@@ -74,11 +74,11 @@ export class UserCRUD implements CRUD <User>
        deleteBtn.addEventListener('click',()=>this.delete(user));
        deleteBtn.classList.add("dlt");
     
-        tr.innerHTML = `<td id = "fname">${user.firstName}</td>
-                        <td id = "middle">${user.middleName}</td>
-                        <td id = "last">${user.lastName}</td>
+        tr.innerHTML = `<td id = "fname">${user.first_name}</td>
+                        <td id = "middle">${user.middle_name}</td>
+                        <td id = "last">${user.last_name}</td>
                         <td id = "email">${user.email}</td>
-                        <td id = "phone">${user.phone}</td>
+                        <td id = "phone">${user.phone_number}</td>
                         <td id = "role-cell">${user.role}</td>
                         <td id = "address">${user.address}</td>
                         `;
@@ -145,11 +145,11 @@ export class UserCRUD implements CRUD <User>
 
             user = {
                 "id": 0,
-                "firstName": tr.cells.namedItem('firstname').textContent,
-                "middleName": tr.cells.namedItem('middlename').textContent,
-                "lastName": tr.cells.namedItem('lastname').textContent,
+                "first_name": tr.cells.namedItem('firstname').textContent,
+                "middle_name": tr.cells.namedItem('middlename').textContent,
+                "last_name": tr.cells.namedItem('lastname').textContent,
                 "email": tr.cells.namedItem('email').textContent,
-                "phone": tr.cells.namedItem('phone').textContent,
+                "phone_number": tr.cells.namedItem('phone').textContent,
                 "role": selectedrole,
                 "address": tr.cells.namedItem('address').textContent
             } 
@@ -173,15 +173,15 @@ export class UserCRUD implements CRUD <User>
             const ob = data1[data1.length-1];
             const newUser = {
                 "id": ob.id,
-                "firstName": ob.firstname,
-                "middleName": ob.middlename,
-                "lastName": ob.lastname,
+                "firstName": ob.first_name,
+                "middleName": ob.middle_name,
+                "lastName": ob.last_name,
                 "email": ob.email,
-                "phone": ob.phone,
+                "phone": ob.phone_number,
                 "role": ob.role,
                 "address": ob.address
             }
-            this.users.push(newUser);
+            this.users.push(user);
             this.load();
 
     }
@@ -246,11 +246,11 @@ export class UserCRUD implements CRUD <User>
         dltbtn.innerHTML = "Delete";
         const updateURL = this.myURL + '/update/' + `${user.id}`;
             
-        user.firstName = fnameCell.textContent !;
-        user.middleName = middlenameCell.textContent !;
-        user.lastName = lastnameCell.textContent !;
+        user.first_name = fnameCell.textContent !;
+        user.middle_name = middlenameCell.textContent !;
+        user.last_name = lastnameCell.textContent !;
         user.email = emailCell.textContent !;
-        user.phone = phoneCell.textContent !;         
+        user.phone_number = phoneCell.textContent !;         
         user.address = addressCell.textContent !;
         for(let i = 0; i<= 2;i++)
         {
@@ -269,11 +269,11 @@ export class UserCRUD implements CRUD <User>
 
         const mybody = {
                 "id": user.id,
-                "firstName": user.firstName,
-                "middleName": user.middleName,
-                "lastName": user.lastName,
+                "firstName": user.first_name,
+                "middleName": user.middle_name,
+                "lastName": user.last_name,
                 "email": user.email,
-                "phone": user.phone,
+                "phone": user.phone_number,
                 "role": user.role,
                 "address": user.address
         };

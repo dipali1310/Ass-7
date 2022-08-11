@@ -8,8 +8,8 @@ enum Role {
 class User {
     
 
-    constructor(public id: number,public firstName:string, public middleName :string, public lastName:string,public email:string,
-        public phone: string,public role: string, public address: string)
+    constructor(public id: number,public first_name:string, public middle_name :string, public last_name:string,public email:string,
+        public phone_number: string,public role: string, public address: string)
     {
  
     }
